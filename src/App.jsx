@@ -1,12 +1,15 @@
 import React from "react";
 import "./App.css";
+import Header from "./Components/Header";
+import TodoList from "./Components/TodoList";
 
 function App() {
   return (
-    <div className="flex justify-center">
-      <h1 className="font-bold text-2xl text-blue-900">
-        React and Tailwind with Vitejs!
-      </h1>
+    <div>
+      <Header />
+      <div className="flex justify-center">
+        <TodoList />
+      </div>
     </div>
   );
 }
