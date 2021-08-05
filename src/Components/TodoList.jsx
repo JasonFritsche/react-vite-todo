@@ -9,8 +9,23 @@ const TodoList = () => {
     { name: "clean the toilet", status: "not started", id: 11734 },
   ]);
 
-  const deleteTodoFromList = (id) => {
+  const deleteTodoFromList = (id) =>
     updateList(list.filter((item) => item.id !== id));
+
+  const updateTodoStatus = (todoData) => {
+    const { id, status } = todoData;
+    updateList(() => {
+      return list.map((item) => {
+        if (item.id === id) {
+          return {
+            ...item,
+            status,
+          };
+        } else {
+          return item;
+        }
+      });
+    });
   };
 
   return (
@@ -23,6 +38,7 @@ const TodoList = () => {
           status={todo.status}
           id={todo.id}
           deleteTodoHandler={deleteTodoFromList}
+          updateTodoStatusHandler={updateTodoStatus}
         />
       ))}
     </div>
