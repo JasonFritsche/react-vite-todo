@@ -6,13 +6,13 @@ const TodoItem = (props) => {
   useEffect(() => {
     ReactTooltip.rebuild();
   }, [props.status]);
-  const { name, status, id, deleteTodoHandler, updateTodoStatusHandler } =
-    props;
+
+  const { name, status, id, deleteTodoHandler, todoStatusHandler } = props;
   let statusIcon;
   let todoItemClass = "flex space justify-between flex-row my-2 p-5 shadow-md";
   const deleteTodo = (id) => deleteTodoHandler(id);
-  const updateTodo = (id, status) => {
-    updateTodoStatusHandler(id, status);
+  const updateTodo = (todoData) => {
+    todoStatusHandler(todoData);
   };
 
   if (status === "not started") {
