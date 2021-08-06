@@ -38,7 +38,7 @@ const TodoList = () => {
           status={todo.status}
           id={todo.id}
           deleteTodoHandler={deleteTodoFromList}
-          updateTodoStatusHandler={updateTodoStatus}
+          todoStatusHandler={updateTodoStatus}
         />
       ))}
     </div>
