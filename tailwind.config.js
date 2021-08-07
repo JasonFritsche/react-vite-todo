@@ -2,10 +2,14 @@ module.exports = {
   purge: [],
   darkMode: false, // or 'media' or 'class'
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage: (theme) => ({
+        mainbg: "url('/assets/todobg.jpg')",
+      }),
+    },
   },
   variants: {
     extend: {},
   },
   plugins: [],
-}
+};
