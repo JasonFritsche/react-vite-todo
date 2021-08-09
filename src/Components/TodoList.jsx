@@ -1,14 +1,24 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import TodoItem from "./TodoItem";
 import AddItem from "./AddItem";
 
 const TodoList = () => {
   const [list, updateList] = useState([]);
   let listGoesHere = "no list...";
+  let initialLoadFired = false;
   const addTodoToList = (todo) => {
     const newList = [...list, todo];
     updateList(newList);
   };
+
+  useEffect(() => {
+    const list = JSON.parse(localStorage.getItem("list"));
+    updateList(list);
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("list", JSON.stringify(list));
+  }, [list]);
 
   const deleteTodoFromList = (id) =>
     updateList(list.filter((item) => item.id !== id));
