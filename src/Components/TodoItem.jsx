@@ -1,6 +1,13 @@
-import React, { useEffect } from "react";
-import { Trash2, PlayCircle, CheckCircle, Circle } from "react-feather";
+import React, { createElement, useEffect } from "react";
+import {
+  Trash2,
+  PlayCircle,
+  CheckCircle,
+  Circle,
+  Calendar,
+} from "react-feather";
 import ReactTooltip from "react-tooltip";
+import { formattedDate } from "../util/date";
 
 const TodoItem = (props) => {
   useEffect(() => {
@@ -9,7 +16,7 @@ const TodoItem = (props) => {
 
   const { name, status, id, created, deleteTodoHandler, todoStatusHandler } =
     props;
-  console.log(created.toLocaleString());
+
   let statusIcon;
   let todoItemClass =
     "flex space justify-between flex-row my-2 p-5 shadow-md opacity-80 hover:opacity-100";
@@ -60,11 +67,11 @@ const TodoItem = (props) => {
       </div>
 
       <div className="flex flex-row">
-        <div className="mr-5">
-          <p>
-            Created: <i>{created.toLocaleString()}</i>
-          </p>
-        </div>
+        <Calendar
+          className="cursor-pointer mr-3"
+          data-tip={"Created: " + formattedDate(created)}
+        />
+        <ReactTooltip />
         {statusIcon}
         <ReactTooltip data-for={id} />
         <Trash2
