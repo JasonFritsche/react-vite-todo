@@ -5,7 +5,6 @@ import AddItem from "./AddItem";
 const TodoList = () => {
   const [list, updateList] = useState([]);
   let listGoesHere = "no list...";
-  let initialLoadFired = false;
   const addTodoToList = (todo) => {
     const newList = [...list, todo];
     updateList(newList);
@@ -54,7 +53,6 @@ const TodoList = () => {
 
   return (
     <div className="w-3/4 ">
-      <h1 className="text-red-500">TodoList</h1>
       <AddItem addTodoHandler={addTodoToList}></AddItem>
       {listGoesHere}
     </div>

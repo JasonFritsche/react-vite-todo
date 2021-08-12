@@ -9,7 +9,8 @@ const TodoItem = (props) => {
 
   const { name, status, id, deleteTodoHandler, todoStatusHandler } = props;
   let statusIcon;
-  let todoItemClass = "flex space justify-between flex-row my-2 p-5 shadow-md";
+  let todoItemClass =
+    "flex space justify-between flex-row my-2 p-5 shadow-md opacity-80 hover:opacity-100";
   const deleteTodo = (id) => deleteTodoHandler(id);
   const updateTodo = (todoData) => {
     todoStatusHandler(todoData);
@@ -19,6 +20,7 @@ const TodoItem = (props) => {
     todoItemClass += " bg-gray-200";
     statusIcon = (
       <PlayCircle
+        className="cursor-pointer"
         data-iscapture="true"
         data-tip="Not started"
         id={id}
@@ -29,6 +31,7 @@ const TodoItem = (props) => {
     todoItemClass += " bg-yellow-300";
     statusIcon = (
       <Circle
+        className="cursor-pointer"
         data-iscapture="true"
         data-tip="In progress"
         id={id}
@@ -39,6 +42,7 @@ const TodoItem = (props) => {
     todoItemClass += " bg-green-200";
     statusIcon = (
       <CheckCircle
+        className="cursor-pointer"
         data-iscapture="true"
         data-tip="Completed"
         id={id}
@@ -55,7 +59,11 @@ const TodoItem = (props) => {
       <div className="flex flex-row">
         {statusIcon}
         <ReactTooltip data-for={id} />
-        <Trash2 data-tip="Remove" onClick={() => deleteTodo(id)} />
+        <Trash2
+          className="cursor-pointer"
+          data-tip="Remove"
+          onClick={() => deleteTodo(id)}
+        />
         <ReactTooltip />
       </div>
     </div>
