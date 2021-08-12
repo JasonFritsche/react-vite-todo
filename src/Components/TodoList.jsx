@@ -45,6 +45,7 @@ const TodoList = () => {
         name={todo.name}
         status={todo.status}
         id={todo.id}
+        created={todo.created}
         deleteTodoHandler={deleteTodoFromList}
         todoStatusHandler={updateTodoStatus}
       />
