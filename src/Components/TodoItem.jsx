@@ -7,7 +7,9 @@ const TodoItem = (props) => {
     ReactTooltip.rebuild();
   }, [props.status]);
 
-  const { name, status, id, deleteTodoHandler, todoStatusHandler } = props;
+  const { name, status, id, created, deleteTodoHandler, todoStatusHandler } =
+    props;
+  console.log(created.toLocaleString());
   let statusIcon;
   let todoItemClass =
     "flex space justify-between flex-row my-2 p-5 shadow-md opacity-80 hover:opacity-100";
@@ -56,11 +58,17 @@ const TodoItem = (props) => {
       <div>
         <p>{name}</p>
       </div>
+
       <div className="flex flex-row">
+        <div className="mr-5">
+          <p>
+            Created: <i>{created.toLocaleString()}</i>
+          </p>
+        </div>
         {statusIcon}
         <ReactTooltip data-for={id} />
         <Trash2
-          className="cursor-pointer"
+          className="cursor-pointer ml-3"
           data-tip="Remove"
           onClick={() => deleteTodo(id)}
         />
